@@ -1,4 +1,4 @@
-import copy
+from numpy import array
 
 board = [
     [5, 3, 0, 0, 7, 0, 0, 0, 0],
@@ -11,8 +11,6 @@ board = [
     [0, 0, 0, 4, 1, 9, 0, 0, 5],
     [0, 0, 0, 0, 8, 0, 0, 7, 9]
 ]
-
-solution = []
 
 
 def not_in_row(value, board, y):
@@ -60,9 +58,8 @@ def empty_cells(board):
 
 
 def backtrack(state):
-    global solution
     if len(empty_cells(state)) == 0:
-        solution = copy.deepcopy(state)
+        print("Solution:\n", array(state))
     for coordinate in empty_cells(state):
         for value in range(1, 10):
             if not_in_3x3(value, state, coordinate) and not_in_col(value, state, coordinate[1]) and not_in_row(value, state, coordinate[0]):
@@ -73,4 +70,3 @@ def backtrack(state):
 
 
 backtrack(board)
-print(solution)
