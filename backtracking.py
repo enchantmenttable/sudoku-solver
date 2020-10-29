@@ -73,3 +73,4 @@ def backtrack(state):
 
 
 backtrack(board)
+print(solution)
