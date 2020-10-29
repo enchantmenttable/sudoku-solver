@@ -1,5 +1,3 @@
-from numpy import array
-
 board = [
     [5, 3, 0, 0, 7, 0, 0, 0, 0],
     [6, 0, 0, 1, 9, 5, 0, 0, 0],
@@ -59,7 +57,11 @@ def empty_cells(board):
 
 def backtrack(state):
     if len(empty_cells(state)) == 0:
-        print("Solution:\n", array(state))
+        print("Solution:")
+        for row in state:
+            for cell in row:
+                print(cell, end=" ")
+            print("")
     for coordinate in empty_cells(state):
         for value in range(1, 10):
             if not_in_3x3(value, state, coordinate) and not_in_col(value, state, coordinate[1]) and not_in_row(value, state, coordinate[0]):
